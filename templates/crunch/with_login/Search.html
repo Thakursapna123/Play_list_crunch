@@ -1,0 +1,511 @@
+{% extends 'crunch/with_login/layout//base.html'%}
+{% load static %}
+{% block home %}
+<div class="overflow-hidden">
+
+  <section class="second_section mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="discover_para mb-0"> Discover playlists for your music</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-12">
+
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-9 col-sm-12 col-12 input_code">
+              <div class="jkh">
+                <input class="effect-2" type="text" name="searchText"
+                  placeholder="Type any Music Genre, Similar Artists, Song Names or Hashtags">
+                <span class="focus-border"></span>
+              </div>
+            </div>
+
+            <div class="col-md-10 col-lg-9 col-sm-12 col-12 media_center">
+
+              <!-- <div class="block radio social_radio">
+                <input type="radio" name="filterData" id="filterData" value="Instagram">
+                <label class="form-check-label" for="rd1"> By Instagram</label>
+                <input type="radio" name="filterData" id="filterData" value="Email">
+                <label class="form-check-label" for="rd2"> By Email</label>
+                <input type="radio" name="filterData" id="filterData" value="All">
+                <label class="form-check-label" for="rd3"> By All</label>
+              </div> -->
+
+              <div class="block radio social_radio">
+                <input type="radio" name="filterData" id="rd1"  value="Instagram" checked>
+                <label class="form-check-label" for="rd1"> By Instagram</label>
+                <input type="radio" name="filterData" id="rd2" value="Email">
+                <label class="form-check-label" for="rd2"> By Email</label>
+                <input type="radio" name="filterData" id="rd3" value="All">
+                <label class="form-check-label" for="rd3"> By All</label>
+              </div>
+
+
+
+            </div>
+            <div class="col-md-10 col-lg-9 col-sm-12 col-12">
+              <div class="last-submit justify-content-center d-flex">
+                <button class="btn go_btn" onclick="serachTextGO(this)"> Go</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- container -->
+  </section>
+
+
+
+  <section class="table_section mt-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-12 col-md-12 col-12 filter_col2">
+
+          <div class="row jlkj">
+
+            <div class="col-12 col-md-6 col-sm-12 pb-4">
+              <div class="Scanning_btn" id="scanningGIF" style="display: none; margin-right: -148px;">
+                <button type="button" class="btn scan_play position-relative"><span>Please wait as this may take a few minutes</span> <span>
+                    <img class="spin_img position-absolute" src="{% static 'images/spinner1.svg' %}"></span></button>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-3 col-sm-12" id="exportXLS">
+              <div class="table_option">
+                <!-- <p class="option-name"><a href="#" class="lstg"><i class="fas fa-download" aria-hidden="true"></i>
+                    Export .xls </a> </p> -->
+              </div>
+            </div>
+
+            <div class="col-12 col-md-3 col-sm-12" id="exportCSV">
+              <div class="table_option">
+                <!-- <p class="option-name"><a href="#" class="lstg"><i class="fas fa-download" aria-hidden="true"></i>
+                    Export .csv</a> </p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table_filter_data mt-5" id="searchResult" style="display: none;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="content">
+
+              <div class="table-responsive custom-table-responsive">
+
+                <table class="table custom-table">
+                  <thead>
+                    <tr class="py-3">
+                      <th scope="col">
+                        <div role="group" class="dropdown btn-group"><button id="dropdown-variants-Primary"
+                            aria-expanded="false" type="button" class="dropdown-toggle btn"
+                            data-bs-toggle="dropdown">PLAYLIST</button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item table_item" href="#">Item 1</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 2</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 3</a></li>
+                          </ul>
+                        </div>
+                      </th>
+
+                      <th scope="col">
+                        <div role="group" class="dropdown btn-group"><button id="dropdown-variants-Primary"
+                            aria-expanded="false" type="button" class="dropdown-toggle btn"
+                            data-bs-toggle="dropdown">OWNER</button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item table_item" href="#">Item 1</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 2</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 3</a></li>
+                          </ul>
+                        </div>
+                      </th>
+                      <th scope="col">
+                        <div role="group" class="dropdown btn-group"><button id="dropdown-variants-Primary"
+                            aria-expanded="false" type="button" class="dropdown-toggle btn"
+                            data-bs-toggle="dropdown">FOLLOWERS</button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item table_item" href="#">Item 1</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 2</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 3</a></li>
+                          </ul>
+                        </div>
+                      </th>
+                      <th scope="col">
+                        <div role="group" class="dropdown btn-group"><button id="dropdown-variants-Primary"
+                            aria-expanded="false" type="button" class="dropdown-toggle btn"
+                            data-bs-toggle="dropdown">TRACKS</button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item table_item" href="#">Item 1</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 2</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 3</a></li>
+                          </ul>
+                        </div>
+                      </th>
+                      <th scope="col">
+                        <div role="group" class="dropdown btn-group"><button id="dropdown-variants-Primary"
+                            aria-expanded="false" type="button" class="dropdown-toggle btn"
+                            data-bs-toggle="dropdown">EMAIL</button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item table_item" href="#">Item 1</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 2</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 3</a></li>
+                          </ul>
+                        </div>
+                      </th>
+                      <th scope="col">
+                        <div role="group" class="dropdown btn-group"><button id="dropdown-variants-Primary"
+                            aria-expanded="false" type="button" class="dropdown-toggle btn"
+                            data-bs-toggle="dropdown">INSTAGRAM</button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item table_item" href="#">Item 1</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 2</a></li>
+                            <li><a class="dropdown-item table_item" href="#">Item 3</a></li>
+                          </ul>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="appendDataResult">
+                    <tr scope="row">
+                      <td class="pl-4">
+                        <div class="tabl_2">
+                          <p class="tab_2">Awake At Last - Top New Rock/Metal Songs - The Awakened Playlist</p>
+                          <div class="d-md-flex">
+                            <p class="card-content-last mr-2 mb-0">
+                              <button type="button" class="btn detail_info_btn">Details</button>
+                            </p>
+                            <p class="hr mb-0 mr-2">
+                              <button type="button" class="btn more_info_btn">Message</button>
+                            </p>
+                            <!-- <p class="hr mb-0">
+                              <button type="button" class="btn more_info_btn"><i class="fa fa-instagram" aria-hidden="true"></i></button>
+                            </p>   -->
+                          </div>
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <div class="tabl_2">
+                          <p class="tab_2">Storm Music Group </p>
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <div class="tabl_2">
+                          <p class="tab_2">999,999</p>
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <div class="tabl_2">
+                          <p class="tab_2">279,888</p>
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <div class="tabl_2">
+                          <p class="tab_2"><a href="#" class="text-decoration-none">dave@socialmusicsociety</a></p>
+                        </div>
+                      </td>
+                      <td class="pr-4">
+                        <div class="tabl_2">
+                          <p class="tab_2"><a href="#" class="text-decoration-none">@Claudia28CuratorSugar</a></p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="spacer">
+                      <td colspan="100"></td>
+                    </tr>
+
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="pagination_ul d-flex justify-content-center">
+            <ul class="pagination modal-3" id="paginationSize">
+              <li><a href="#" class="prev"><i class="fas fa-arrow-left pag_icon"></i></a></li>
+              <li class="pagi_li"><a href="#" class="active">1</a></li>
+              <li class="pagi_li"> <a href="#">2</a></li>
+              <li class="pagi_li"> <a href="#">3</a></li>
+              <li class="pagi_li"> <a href="#">4</a></li>
+              <li class="pagi_li"> <a href="#">5</a></li>
+              <li class="pagi_li"><a href=#6>…</a>
+              <li class="pagi_li"> <a href="#">9</a></li>
+              <li class="pagi_li"><a href="#" class="next"><i class="fas fa-arrow-right pag_icon"></i></a></li>
+            </ul>
+            </li>
+
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+
+</div>
+
+
+<script>
+  function serachTextGO(thisTxt) {
+
+    var searchText = $('input[name="searchText"]').val().trim();
+
+
+    // $('#playlist_data').html("");
+    // $('#pageNoData').html("");
+    // $('#showResults').hide();
+    // $('#dataCount').html("0");
+    // $("#dataSum").html("");
+    // $('#pagIna').hide();
+    // jQuery('#next').css('opacity', '1');
+    // $('#next').css('pointer-events', '');
+    // jQuery('#prev').css('opacity', '0.5');
+    // $('#prev').css('pointer-events', 'none');
+    // $('#prev').attr("attrValue",-1);
+    // $('#next').attr("attrValue", 1);
+    // localStorage.removeItem('LENDATA');
+    if (searchText.length == 0) {
+      alert("Enter Some Keyword");
+      // $('input[name="csv_name"]').val("NONE");
+      return false;
+    }
+    $('#scanningGIF').show();
+    var getCheckedValue = $('input[name="filterData"]:checked').attr('value');
+    console.log("HUHUH", getCheckedValue);
+    // alert(getCheckedValue);
+    // var searchText = $('#searchText').val().trim();
+    //     $('#loaderID').show();
+    // var checkData = localStorage.getItem('SEARCH');
+    // console.log('checkData',checkData);
+    // if (checkData === "STARTED")
+    // {
+    //     localStorage.setItem('SEARCH', "CALLED");
+    //     $('#playlist_data').html('');
+    //     localStorage.setItem('LENDATA', 0);
+    //     var getLenData = localStorage.getItem('LENDATA');
+    //     $('#dataCount').html(getLenData);
+    // }
+    // else
+    // {
+    //     localStorage.setItem('SEARCH', "STARTED");
+    // }
+
+
+    if (searchText.length != 0) {
+      var properties = { 'searchText': searchText, 'checked_value': getCheckedValue }
+      $.ajax({
+        type: 'GET',
+        url: "search_results",
+        data: properties,
+        success: function (response) {
+          console.log("JHGJHGJH", response);
+          $('#scanningGIF').hide();
+          renderAllHtml(response, searchText);
+        }
+      });
+    }
+    else {
+      $('#loaderID').hide();
+      $('#playlist_data').append('<div class="card m-3" style="background-color: rgb(58, 54, 54);">\
+                                        <div class="card-body text-center">\
+                                            <h5>Search results</h5>\
+                                        </div>\
+                                    </div>'
+      );
+      return false;
+    }
+  }
+
+  function paginationPage(thistxt) {
+    $(thistxt).css({"border":"1px solid"});
+    
+    var page_no = $(thistxt).attr('pageNO');
+    var itemPage = 0;
+    if (page_no == "BACK") {
+      var crpage = localStorage.getItem('CURRENTPAGE');
+      var tlpage = localStorage.getItem('TOTAL_PAGE');
+      if (parseInt(crpage) == 1) {
+        $('.prev').attr("pointer-events", "none");
+        return false;
+      }
+      itemPage = parseInt(crpage) - 1;
+      localStorage.setItem('CURRENTPAGE', itemPage);
+    }
+    else if (page_no == "NEXT") {
+      var crpage = localStorage.getItem('CURRENTPAGE');
+      var tlpage = localStorage.getItem('TOTAL_PAGE');
+      if (parseInt(crpage) == parseInt(tlpage)) {
+        $('.next').attr("pointer-events", "none");
+        return false;
+      }
+      itemPage = parseInt(crpage) + 1;
+      localStorage.setItem('CURRENTPAGE', itemPage);
+    }
+    else {
+      localStorage.setItem('CURRENTPAGE', page_no);
+    }
+
+
+    var dataINDEX = page_no;
+    var dataCount = 0;
+    var dataStr = '';
+    var dataR = localStorage.getItem('data_result');
+    var storedNames = JSON.parse(dataR);
+    var renderdataStr = loopRenderData(storedNames, dataStr, dataCount, dataINDEX)
+    $('#appendDataResult').html("");
+    $('#appendDataResult').append(renderdataStr);
+    // return page_no;
+  }
+
+  function renderAllHtml(response, searchText) {
+    if (response['data'].length != 0) {
+      $('#searchResult').show();
+      localStorage.removeItem('data_result');
+      var dataStr = '';
+
+      localStorage.setItem('LENDATA', response['data'].length);
+      var lenD = localStorage.getItem('LENDATA');
+      var quotient = Math.floor(lenD / 10);
+      var remainder = lenD % 10;
+      var totalNoPage = quotient;
+      localStorage.setItem('TOTAL_PAGE', totalNoPage);
+      $('#paginationSize').html("");
+      var innerPage = '';
+      var prevButton = '<li><a  href="javascript:void(0);" pageNO="BACK" onclick="paginationPage(this)"  class="prev"><i class="fas fa-arrow-left pag_icon"></i></a></li>';
+      var nextButton = '<li class="pagi_li"><a  href="javascript:void(0);" pageNO="NEXT" onclick="paginationPage(this)" class="next"><i class="fas fa-arrow-right pag_icon"></i></a></li>';
+      for (var i = 1; i < totalNoPage + 1; i++) {
+        if (i == 1) {
+          innerPage = '<li class="pagi_li"><a  href="javascript:void(0);" pageNO=' + i + ' onclick="paginationPage(this)">' + i + '</a></li>';
+        } else {
+          innerPage = innerPage + '<li class="pagi_li"><a  href="javascript:void(0);" pageNO=' + i + ' onclick="paginationPage(this)" >' + i + '</a></li>';
+        }
+
+      }
+      var completePagination = prevButton + innerPage + nextButton;
+      $('#paginationSize').html(completePagination);
+
+      localStorage.setItem('CURRENTPAGE', 1);
+
+      // localStorage.setItem('TOTAL_PAGE', lenD);
+      // $('#dataCount').html(lenD);
+      const n = 10
+      const dataDict = new Array(Math.ceil(response['data'].length / n)).fill().map(_ => response['data'].splice(0, n));
+      localStorage.setItem('data_result', JSON.stringify(dataDict));
+      var dataR = localStorage.getItem('data_result');
+      var storedNames = JSON.parse(dataR);
+      var dataCount = 0;
+      var dataINDEX = 0;
+      var renderdataStr = loopRenderData(storedNames, dataStr, dataCount, dataINDEX);
+
+      $('#appendDataResult').html("");
+      $('#appendDataResult').append(renderdataStr);
+
+      if (dataStr.length != 0) {
+        $('#showResults').show();
+        $('#loaderID').hide();
+        $('#pagIna').show();
+      }
+
+      // setTimeout(searchMusic, 1000);
+      $('input[name="csv_name"]').val(searchText);
+    }
+    else if (response['data'].length == 0) {
+      console.log("njk");
+      $('#loaderID').hide();
+      $('#showResults').show();
+      $('#playlist_data').html('<div class="card m-3" style="background-color: rgb(58, 54, 54);">\
+                                            <div class="card-body text-center">\
+                                                <h5>No Record Available</h5>\
+                                            </div>\
+                                        </div>');
+      return false;
+    }
+
+  }
+
+
+  function loopRenderData(storedNames, dataStr, dataCount, dataINDEX) {
+    for (i = 0; i < storedNames[dataINDEX].length; i++) {
+      var displayName = storedNames[0][i]['author_name'];
+      if (storedNames[dataINDEX][i]['email']) {
+        var emailText = storedNames[dataINDEX][i]['email'];
+      }
+      else {
+        var emailText = "-";
+      }
+      if (storedNames[dataINDEX][i]['instagram']) {
+        var twitterText = '<a target="_blank" href=' + storedNames[dataINDEX][i]['instagram'] + '><i class="fa fa-instagram instaCSS" style="font-size:50px"></i></a>';
+      }
+      else {
+        var twitterText = "-";
+      }
+
+
+
+
+      var data = ' <tr scope="row">\
+                      <td class="pl-4">\
+                        <div class="tabl_2">\
+                          <p class="tab_2">'+ storedNames[dataINDEX][i]['desciption'] + '</p>\
+                          <div class="d-md-flex">\
+                            <p class="card-content-last mr-3 mb-0">\
+                              <button type="button" class="btn more_info_btn"">\
+                               <a target="_blank" href='+ storedNames[dataINDEX][i]['display_url'] +'>Details</a></button>\
+                            </p>\
+                            <p class="hr mb-0">\
+                              <button type="button" class="btn more_info_btn">Message</button>\
+                            </p>\
+                          </div>\
+                        </div>\
+                      </td>\
+                      <td class="text-center">\
+                        <div class="tabl_2">\
+                          <p class="tab_2">'+ storedNames[dataINDEX][i]['ownerName'] + '</p>\
+                        </div>\
+                      </td>\
+                      <td class="text-center">\
+                        <div class="tabl_2">\
+                          <p class="tab_2">'+ storedNames[dataINDEX][i]['followers'] + '</p>\
+                        </div>\
+                      </td>\
+                      <td class="text-center">\
+                        <div class="tabl_2">\
+                          <p class="tab_2">'+ storedNames[dataINDEX][i]['tracks'] + '</p>\
+                        </div>\
+                      </td>\
+                      <td class="text-center">\
+                        <div class="tabl_2">\
+                          <p class="tab_2"><a href="#" class="text-decoration-none">'+ emailText + '</a></p>\
+                        </div>\
+                      </td>\
+                      <td class="pr-4">\
+                        <div class="tabl_2">\
+                          <p class="tab_2"><a href="#" class="text-decoration-none">'+ twitterText + '</a></p>\
+                        </div>\
+                      </td>\
+                    </tr>\
+                    <tr class="spacer">\
+                      <td colspan="100"></td>\
+                    </tr>'
+
+
+
+
+
+      dataStr = dataStr + data;
+      emailText = '';
+      dataCount = dataCount + 1;
+    }
+    return dataStr;
+  }
+</script>
+</script>
+{% endblock %}

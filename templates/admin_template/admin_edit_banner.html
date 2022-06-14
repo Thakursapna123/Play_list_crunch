@@ -1,0 +1,74 @@
+{% extends 'admin_template/layout/base.html' %}
+
+{% block cms_page %}
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+         
+
+          <div class="card">
+            <div class="card-header">
+              <!-- <h3 class="card-title"></h3> -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                  <!-- general form elements -->
+                  <div class="card card-primary">
+                    <div class="card-header">
+                      <h3 class="card-title">Home Banner Template</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+              {% for i in bannerData %}
+                    <form  method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="card-body">
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Banner Head Line</label>
+                          <input type="text" class="form-control" name="bannerHeadLine" value="{{i.bannerHeadText}}" placeholder="Enter Banner Text" required>
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Banner Image (Current File : {{i.document}})</label>
+                          <input type="file" class="form-control" name="bannerImage"   placeholder="Enter email" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Banner Text</label>
+                          <textarea type="text" class="form-control" name="bannerText" value="{{i.bannerText}}" placeholder="Enter First Name" required>{{i.bannerText}}</textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Banner Sub Text</label>
+                          <textarea type="text" class="form-control" name="bannerSubText" value="{{i.bannerSubText}}" placeholder="Enter First Name" required> {{i.bannerSubText}}</textarea>
+                        </div>
+                    
+      
+                      <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Update Banner</button>
+                      </div>
+                    </form>
+                    {% endfor %}
+                 
+                  </div>
+              </div>
+              <div class="col-md-2"></div>
+          </div>  
+          </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+    
+    </div>
+   
+  </section>
+{% endblock %}
+
+  

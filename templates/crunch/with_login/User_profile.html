@@ -1,0 +1,233 @@
+{% extends 'crunch/with_login/layout//base.html'%}
+{% load static %}
+{% block home %}
+
+<div class="overflow-hidden">
+
+  <section class="topic-wrp py-md-5 my-md-2">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-12 mb-2">
+          <div class="topic">
+            <p class="back_text"><a href="{% url 'search' %}" class="Customer-reviews-text text-decoration-none"><i
+                  class="fas fa-arrow-left pag_icon" aria-hidden="true"></i> Back</a> </p>
+            <h3 class="account_detai"> Account Settings for [{{userData.email}}] </h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <div class="review-view">
+            <div class="card-view">
+              <p class="profile_text">User Profile</p>
+              <div class="horizontal_dash mt-2 mb-3"> </div>
+              <!-- <div class="img-dta mt-3 mb-3">
+                <img src="{% static 'images/jd_img.png' %}" alt="img" class="img-fluid" width="80px">
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 py-5 py-md-0">
+          <div class="starting-reg  pt-2">
+        
+            <form class="needs-validation" novalidate="" method="POST">
+              {% csrf_token %}
+              <div class="form-row justify-content-center">
+                <div class="col-lg-10 col-md-11 col-12 mb-3">
+                  <label for="validationCustom01">Name</label>
+          
+                  <input type="text" class="form-control cust-sel-size" id="validationCustom01" name="userName" value="{{userData.first_name}}" required="">
+                  <div class="invalid-feedback">Please fill out this feild.</div>
+                </div>
+              </div>
+
+              <div class="form-row justify-content-center">
+                <div class="col-lg-10 col-md-11 col-12 mb-3">
+                  <label for="validationCustom02">Email</label>
+                  <input type="text" class="form-control cust-sel-size" id="validationCustom01" value="{{userData.email}}" readonly>
+                  <div class="invalid-feedback">Please fill out this feild.</div>
+                </div>
+              </div>
+
+              <!-- <div class="form-row justify-content-center">
+                <div class="col-lg-10 col-md-11 col-12 mb-3">
+                  <label for="validationCustom03">New password</label>
+                  <input type="text" class="form-control cust-sel-size" id="validationCustom01" value="" required="">
+                  <div class="invalid-feedback">Please fill out this feild.</div>
+                </div>
+              </div>
+
+              <div class="form-row justify-content-center">
+                <div class="col-lg-10 col-md-11 col-12 mb-3">
+                  <label for="validationCustom04">Retype password</label>
+                  <input type="text" class="form-control cust-sel-size" id="validationCustom01" value="" required="">
+                  <div class="invalid-feedback">Please fill out this feild.</div>
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="col-lg-10 col-md-11 col-12 mb-3">
+                  <label for="validationCustom04">Current password</label>
+                  <input type="text" class="form-control cust-sel-size" id="validationCustom01" value="" required="">
+                  <div class="invalid-feedback">Please fill out this feild.</div>
+                </div>
+              </div> -->
+
+              <div class="form-row justify-content-center d-flex">
+                <div class="col-lg-10 col-md-11 col-12 mb-md-3">
+                  <div class="last-submit justify-content-center d-flex">
+                    <button class="btn login_btn" type="submit"> Update</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div> <!-- container -->
+  </section>
+
+
+
+  <section class="content mb-2">
+    <div class="container">
+      <div class="row mb-2">
+        <div class=" col-12 col-sm-12">
+          <p class="subs_text"> Subscription & Billing</p>
+          <div class="horizontal_dash2 mt-2 mb-3"> </div>
+        </div><!-- /.col -->
+      </div>
+      <div class="row py-5">
+        <div class="col-md-12 col-12">
+          <div class="dashboard-profile-details">
+            <div class="row dsh_profile_header">
+              <div class="col-md-6 col-12 pb-4">
+                <h5 class="werser">Current Plan</h5>
+              </div>
+              <div class="col-md-12 col-12">
+                <h5 class="dvfdf">Full Playlist Access</h5>
+                {% if last_payment.recurring_billing %}
+                <p class="userdp_para"> Your next billing date is {{ last_payment.subscription_expiry.date }} <span class="dp_nc">
+                  <a href="cancel_subscription/{{ last_payment.subscription_refrence }}"
+                      class="f_psw text-decoration-underline"> Cancel Subscription </a></span></p>
+                  {% else %}
+                  <p class="userdp_para"> Your plan will expire on {{ last_payment.subscription_expiry.date }} <span class="dp_nc">
+                    <!-- <a href="#"
+                    class="f_psw text-decoration-underline"> Cancel Subscription </a> -->
+                  </span></p>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row mb-2">
+        <div class=" col-12 col-sm-6">
+          <h3 class="subscrip">Payment History</h3>
+        </div><!-- /.col -->
+      </div>
+
+
+      <div class="table_filter_data">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="content">
+
+                <div class="table-responsive custom-table-responsive">
+
+                  <table class="table custom-table">
+                    <thead>
+                      <tr class="py-3">
+                        <th class="user_table2 text-left" scope="col">
+                          DATE
+                        </th>
+                        <th class="user_table2 text-left" scope="col">
+                          PLAN
+                        </th>
+                        <th class="user_table2 text-left" scope="col">
+                          ORDER ID
+                        </th>
+                        <th class="user_table2 text-left" scope="col">
+                          AMOUNT
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% if paymentHistory %}
+                      {% for i in paymentHistory %}
+                      <tr scope="row">
+                        <td class="pl-4">
+                          <div class="tabl_2">
+                            <p class="tab_2">{{ i.subscription_start }}</p>
+                          </div>
+                        </td>
+                        <td class="text-left">
+                          <div class="tabl_2">
+                            {% if i.subscription_type %}
+                            <p class="tab_2">{{ i.subscription_type }}</p>
+                            {% else %}
+                            <p class="tab_2">No Subscrtion </p>
+                            {% endif %}
+                          </div>
+                        </td>
+                        <td class="text-left">
+                          <div class="tabl_2">
+                            {% if i.order_ID %}
+                            <p class="tab_2">{{ i.order_ID }}</p>
+                            {% else %}
+                            <p class="tab_2">-</p>
+                            {% endif %}
+                           
+                          </div>
+                        </td>
+                        <td class="text-left">
+                          <div class="tabl_2">
+                            {% if i.price %}
+                            <p class="tab_2">{{ i.price }} {{ i.currency }}</p>
+                            {% else %}
+                            <p class="tab_2">-</p>
+                            {% endif %}
+                          
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="spacer">
+                        <td colspan="100"></td>
+                      </tr>
+                      {% endfor %}
+                      {% else %}
+                      <tr scope="row">
+                        <td class="pl-4">
+                          <div class="tabl_2">
+                            <p class="tab_2">{{ i.subscription_start }}</p>
+                          </div>
+                        </td>
+                        <td class="text-left" colspan="3">
+                          <p class="tab_2">No Payment History Available</p>
+                        </td>
+                      </tr>
+                      {% endif %}
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!------container----->
+  </section>
+
+
+
+</div> <!-- overflow div -->
+
+
+{% endblock %}

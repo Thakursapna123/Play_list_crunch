@@ -1,0 +1,71 @@
+{% extends 'admin_template/layout/base.html' %}
+
+{% block cms_page %}
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+         
+
+          <div class="card">
+            <div class="card-header">
+              <!-- <h3 class="card-title"></h3> -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                  <!-- general form elements -->
+                  <div class="card card-primary">
+                    <div class="card-header">
+                      <h3 class="card-title">Home Banner Template</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form  method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="card-body">
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Name</label>
+                          <input type="text" class="form-control" name="name" value="{{data.name}}"  placeholder="Enter Name" required>
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Photo({{data.document}})</label>
+                          <input type="file" class="form-control" name="imagesrc" enctype="multipart/form-data" value="{{data.document}}" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Tittle</label>
+                          <textarea type="text" class="form-control" name="title" value="{{data.text}}" placeholder="Enter First Name" required>{{data.text}}</textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">About</label>
+                          <textarea type="text" class="form-control" name="about" value="{{data.about}}" placeholder="Enter First Name" required>{{data.about}}</textarea>
+                        </div>
+                    
+      
+                      <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Update User</button>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+              <div class="col-md-2"></div>
+          </div>  
+          </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+    
+    </div>
+   
+  </section>
+{% endblock %}
+
+  

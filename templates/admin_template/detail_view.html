@@ -1,0 +1,121 @@
+{% extends 'admin_template/layout/base.html' %}
+
+{% block detail_view %}
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+       
+
+        <div class="card">
+          <div class="card-header">
+            <!-- <h3 class="card-title"></h3> -->
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+              <div class="row">
+            <!-- <div class="col-md-2"></div> -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">User Payment History</h3>
+                  </div>
+                
+                  <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                      <thead>
+                      <tr>
+                        <!-- <th>Username</th> -->
+                        <th>Email</th>
+                        <th>Subscription Status</th>
+                        <th>Order ID</th>
+                        <th>Recurring</th>
+                        <th>Subscription ID</th>
+                        <th>Subscription Date</th>
+                        <th>Subscription Expiry</th>
+                       
+                      </tr>
+                      </thead>
+                      <tbody>
+        
+                          {% for i in user_data %}
+                      <tr>
+                        <!-- <td>{{ i.username }}</td> -->
+                        <td>{{ i.userFK.email }}</td>
+                        {% if i.subscribed %}
+                        <td style="color: forestgreen;">Active</td>
+                        {% else %}
+                        <td style="color: red;">In-Active</td>
+                        {% endif %}
+                        {% if i.order_ID %}
+                        <td>{{ i.order_ID }}</td>
+                        {% else %}
+                        <td> NA </td>
+                        {% endif %}
+
+                        {% if i.recurring_billing %}
+                        <td>{{ i.recurring_billing }}</td>
+                        {% else %}
+                        <td> NA </td>
+                        {% endif %}
+
+                        {% if i.subscription_refrence %}
+                        <td>{{ i.subscription_refrence }}</td>
+                        {% else %}
+                        <td> NA </td>
+                        {% endif %}
+                       
+
+                        {% if i.subscription_start %}
+                        <td>{{ i.subscription_start }}</td>
+                        {% else %}
+                        <td> NA </td>
+                        {% endif %}
+
+                        {% if i.subscription_start %}
+                        <td>{{ i.subscription_start }}</td>
+                        {% else %}
+                        <td> NA </td>
+                        {% endif %}
+                      
+                        <!-- <td>
+                          <a href="admin_view_user/{{ i.id }}" class="button">View</a> -->
+                          <!-- <a href="admin_edit_user/{{ i.id }}" class="button">Edit</a>| -->
+                          <!-- <a href="admin_delete_user/{{ i.id }}" class="button">Delete</a> -->
+                        <!-- </td> -->
+                       
+                      </tr>
+                      {% endfor %}
+                
+                      </tbody>
+                      <tfoot>
+                      <tr>
+                        <th>Email</th>
+                        <th>Subscription Status</th>
+                        <th>Order ID</th>
+                        <th>Recurring</th>
+                        <th>Subscription ID</th>
+                        <th>Subscription Date</th>
+                        <th>Subscription Expiry</th>
+                      </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+        </div>  
+        </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+  
+  </div>
+
+</section>
+{% endblock %}

@@ -1,0 +1,95 @@
+
+{% extends 'crunch/layout/base.html' %}
+{% load static %}
+{% block home %}
+<div class="overflow-hidden bg_main">
+
+  <section class="main-registration pt-2 pb-5 my-5">
+
+        <div class="container"> 
+        <div class="row justify-content-center">
+          <div class="col-lg-6 col-md-9 col-sm-12 col-12">
+            
+  <div class="starting-reg  pt-2">
+    {% if fail %}
+    <div class="form-row justify-content-center">
+      <div class="col-lg-10 col-md-11 col-12 mb-3" style="text-align: center;">
+        <i class="fa fa-exclamation-circle" aria-hidden="true" style="color: #E5635A;"></i>
+        <label for="validationCustom01" style="color: white; text-align: center;">{{ fail }}</label>
+      </div>
+    </div>
+    {% endif %}
+
+
+
+   <form class="needs-validation" novalidate="" method="POST">
+     {% csrf_token %}
+     <p class="login_para justify-content-center d-flex"> Already a Member? &nbsp; <span class="login"> <a href="{% url 'sigin' %}" class="f_psw">Login Now </a></span> </p>
+    <div class="form-row justify-content-center">
+      <div class="col-lg-10 col-md-11 col-12 mb-3">
+        <label for="validationCustom01">Full Name*</label>
+        <input type="text" class="form-control cust-sel-size" name="fullName" id="validationCustom01" value="" required="">
+      <div class="invalid-feedback">Please fill out this feild.</div>
+    </div>
+    </div>
+  
+   <div class="form-row justify-content-center">
+      <div class="col-lg-10 col-md-11 col-12 mb-3">
+        <label for="validationCustom02">Email Address*</label>
+        <input type="email" class="form-control cust-sel-size" name="emailAddress" id="validationCustom01" value="" required="">
+      <div class="invalid-feedback">Please fill out this feild.</div>
+    </div>
+    </div>
+  
+   <div class="form-row justify-content-center">
+      <div class="col-lg-10 col-md-11 col-12 mb-3">
+        <label for="validationCustom03">Password*</label>
+        <input type="password" class="form-control cust-sel-size" name="password" id="validationCustom01"  value="" required="">
+      <div class="invalid-feedback">Please fill out this feild.</div>
+    </div>
+    </div>
+  
+   <div class="form-row justify-content-center">
+      <div class="col-lg-10 col-md-11 col-12 mb-3">
+        <label for="validationCustom04">Confirm Password*</label>
+        <input type="password" class="form-control cust-sel-size" name="confirmPassword" id="validationCustom01"  value="" required="">
+      <div class="invalid-feedback">Please fill out this feild.</div>
+    </div>
+    </div>
+  
+  
+    <div class="form-row form-check mb-md-3 justify-content-center d-flex check_padding">
+      <div class="col-lg-11 col-md-12 col-12 mb-2">
+      <input type="checkbox" class="form-check-input" id="validationFormCheck2" required="">
+      <label class="form-check-label" for="validationFormCheck2">
+        I would like to receive updates and promotional emails.</label>
+      <div class="invalid-feedback"> You must agree before submitting.</div>
+    </div>
+  <div class="col-lg-11 col-md-12 col-12 mb-3">
+      <input type="checkbox" class="form-check-input" id="validationFormCheck1" required="">
+      <label class="form-check-label" for="validationFormCheck1">
+        By signing up I agree to the <span class="term_nc"><a href="{% url 'term_and_condition' %}" class="f_psw">Terms of Use and Privacy Policy </a></span></label>
+      <div class="invalid-feedback"> You must agree before submitting.</div>
+    </div>
+  </div>
+  
+  
+   <div class="form-row justify-content-center d-flex">
+        <div class="col-lg-10 col-md-11 col-12 mb-md-3">
+          <div class="last-submit justify-content-center d-flex">
+    <button class="btn login_btn" type="submit"> Sign Up</button>
+  </div>
+  
+  </div>
+  </div>
+  </form>
+  
+        </div>
+      </div>
+    </div>
+         </div>
+        </section>
+  
+          </div> <!-- overflow div -->
+  
+{% endblock %}

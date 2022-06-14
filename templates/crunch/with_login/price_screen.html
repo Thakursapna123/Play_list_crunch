@@ -1,0 +1,164 @@
+{% extends 'crunch/with_login/layout/base.html' %}
+{% load static %}
+{% block home %}
+    <style>
+        .hide {
+        display: none;
+      }
+      .map-container {
+        text-align: center;
+      }
+      .get_start_btn {
+        background-color: #f437a5;
+        color: #fff;
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 18px;
+        border-radius: 50px;
+        text-decoration: none;
+        min-width: 85px;
+    }
+    .division-table{
+        max-width: 400px;
+        margin: auto;
+    }
+    .division-table table{
+        width: 100%;
+    }
+    .division-table p{
+        text-align: left;
+    }
+    .div-toggle {
+        display: flex;
+        justify-content: center;
+        max-width: 188px;
+        margin: auto;
+        background-color: #f437a5;
+        border-radius: 50px;
+        padding-right: 11px;
+        padding: 0px 9px;
+    }
+    .map-point-sm input {
+        display: none;
+    }
+    .map-point-sm {
+        background-color: transparent;
+        color: #fff;
+        padding: 6px 0px;
+        border-radius: 50px;
+        border: 0;
+    }
+    .map-point-sm.added .map-radio-span {
+        background-color: black;
+    }
+    .map-point-sm .map-radio-span {
+        background-color: transparent;
+        padding: 0px 22px;
+        height: 30px;
+        text-align: center;
+        display: block;
+        font-size: 14px;
+        line-height: 28px;
+        border-radius: 50px;
+        width: 86px
+    }
+    button.map-point-sm:focus{
+      outline: 0;
+    }
+      </style>
+      <div class="overflow-hidden bg_main">
+        <section class="main-registration py-5 my-5">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-6 col-md-9 col-sm-12 col-12" style="background-color: black;">
+                <div class="starting-reg  pt-2">
+                  <div class="form-row justify-content-center d-flex" style="height:400px">
+                    <div class="col-lg-10 col-md-11 col-12 mb-md-3" style="color: white;; text-align: center;font-size: 25px;">
+                      <h1>Payments</h1>
+                      <div class="map-container">
+                        <div class="inner-basic division-map div-toggle" data-target=".division-details" id="divisiondetail">
+                          <button class="map-point-sm added" data-show=".darwin">
+                            <div class="content">
+                              <input type="radio" class="centered-y"  />
+                              <span class="map-radio-span">Yearly</span>
+                            </div>
+                          </button>
+                          <button class="map-point-sm" data-show=".ptown">
+                            <div class="content">
+                              <input type="radio" class="centered-y" checked="checked" />
+                              <span class="map-radio-span">Monthly</span>
+                            </div> 
+                          </button>
+                        </div><!-- end inner basic -->
+                      </div>
+                      <div class="map-container">
+                        <div class="inner-basic division-details">
+                          <div class="initialmsg hide">
+                            <p>Choose Monthly and Yearly Subscription</p>
+                          </div>
+                          <div class="darwin division-table" style="margin-top: 25px;">
+                            {% for items in amount %}
+                              <table>
+                                  <tbody>
+                                      <tr>
+                                          <td><p>Full Playlist Access</p></td>
+                                          <td><p> ${{items.yearly_price}}</p></td>
+                                      </tr>
+                                      <tr>
+                                        <td><p>Total</p></td>
+                                        <td><p> ${{items.yearly_price}}</p></td>
+                                    </tr>
+                                  </tbody>
+                              </table>
+                            
+                            
+                          </div>
+                          <div class="ptown hide division-table" style="margin-top:25px ;">
+                            <table>
+                              
+                                <tbody>
+                                    <tr>
+                                        <td><p>Full Playlist Access</p></td>
+                                        <td><p> ${{items.monthly_price}}</p></td>
+                                    </tr>
+                                    <tr>
+                                      <td><p>Total</p></td>
+                                      <td><p> ${{items.monthly_price}}</p></td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                            {% endfor %}
+                            <!-- <p>Full Playlist Access</p>
+                            <p>Total $100.95</p> -->
+                          </div>
+                        </div>
+                      </div>
+                      <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+                      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+                      <script id="rendered-js">
+                      $(document).on('click', '.map-point-sm', function () {
+                        var show = $(this).data('show');
+                       $(".map-point-sm").removeClass("added");
+                        $(this).toggleClass('added');
+                        $(show).removeClass("hide").siblings().addClass("hide");
+                      });
+                      //# sourceURL=pen.js
+                          </script>
+                      <hr style="color: wheat;border: 1px solid;" />
+                      <div class="last-submit justify-content-center d-flex">
+                         <a href="{% url 'checkout' %}" class="btn btn-grad get_start_btn">Proceed</a>
+                            <!-- https://secure.2checkout.com/checkout/buy?merchant=252114441478&tpl=default&return-type=redirect&return-url=https%3A%2F%2Fcrunch.appsimagicallp.com%2Fthankyou_page%2F&prod=ail1&qty=1&signature=592a15336ba637474b39e221a6d7f5ecec302a5f2c1ea55c5f1e83ba8773d296 -->
+                          </div>
+                    </div>
+                  </div>
+                  <!-- </form> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+{% endblock %}

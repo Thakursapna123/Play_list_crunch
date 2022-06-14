@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Crunch playlist</title>
+
+  <!--  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://kit.fontawesome.com/8a15c38d9e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'css/owl.theme.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">
+
+ 
+
+</head>
+
+<body>
+    
+      <!-- Hedare Tag -->
+      
+<!-- header section -->
+<header class="navbar-light navbar-fixed-top">
+    <div class="container px-md-0">
+             <nav class="navbar navbar-expand-lg navbar-light px-0 py-3">
+  <a class="navbar-brand" href="{% url 'search' %}"><img src="{% static 'images/Header_logo.svg' %}" alt="IMG" class="img-fluid main_logo"></a>
+<div class="ml-auto">
+   <ul class="toggle_switch">
+<li class="tog_icon1"> 
+
+<span class="usernme mb-0"> Dark Mode </span> <label class="switch">
+  <input type="checkbox" checked="">
+  <span class="slider round"></span>
+</label>
+</li>
+
+ <li class="tog_icon2">
+
+<div class="dropdown header2_drpdown">
+    <input class="text-box" type="text" placeholder=Hello {{username}}>
+    <div class="options" id="user_menu_subparent">
+      <div onclick=""><a class="item_subparnt dropdown-item" href="{% url 'user_profile' %}">My Profile</a></div>
+      <div onclick=""><a class="item_subparnt dropdown-item" href="{% url 'resetpassword' %}">Change Password</a></div>
+      <div onclick=""><a class="item_subparnt dropdown-item" href="{% url 'logout_home' %}">Sign Out</a></div>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div class="dropdown w-100 mb-3 mb-md-0">
+          <button class="btn person w-100 dropdown-toggle newdrop" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <div class="user_icon"> <span class="usernme mb-0">Hi {{ username }} </span>  </div>
+            </button>
+           <div class="dropdown-menu" id="user_menu_subparent" aria-labelledby="dropdownMenuButton" style="">
+           <a class="item_subparnt dropdown-item" href="{% url 'user_profile' %}">User Profile</a>
+         <a class="item_subparnt dropdown-item" href="{% url 'resetpassword' %}">Change Password</a>
+       <a class="item_subparnt dropdown-item" href="{% url 'logout_home' %}">Sign Out</a>
+         </div>
+   </div> -->
+
+
+
+
+        <!--  <div class="dropdown header2_drpdown"> -->
+          <!-- <button class="btn person w-100 dropdown-toggle newdrop" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+            <!-- <div class="options" id="user_menu_subparent">
+           <div class="user_icon"><span class="usernme mb-0">Hi {{ username }} </span> </div> -->
+            <!-- </button> -->
+         <!--   <div onclick=""><a class="dropdown-menu" id="user_menu_subparent" aria-labelledby="dropdownMenuButton" style=""></a></div>
+           <div onclick=""><a class="item_subparnt dropdown-item" href="{% url 'user_profile' %}">User Profile</a>
+           <div onclick=""><a class="item_subparnt dropdown-item" href="{% url 'resetpassword' %}">Change Password</a></div>
+           <div onclick=""><a class="item_subparnt dropdown-item" href="{% url 'logout_home' %}">Sign Out</a></div>
+         </div>
+   </div>   -->
+
+
+             
+  </li>
+</ul>
+</nav>
+</div>
+</header>
+
+      
+{% block home %}
+{% endblock %}   
+<footer class="footer_bg text-left">
+    <div class="container">
+      <div class="row pb-4">
+        <div class="col-12 col-lg-4 col-md-12 col-12">
+          <p> <a href="{% url 'home' %}"> <img src="{% static 'images/footer_logo.svg' %}" alt="aap Logo"> </a> </p>
+        </div>
+
+        <div class="col-12 col-lg-8 col-md-12 col-12 footer_col2">
+          <div class="row jlkj">
+            <div class="col-12 col-md-4 col-sm-6 px-md-0">
+              <div class="foot-list">
+                <p class="fot-name"><a href="{% url 'term_and_condition' %}" class="listing">Terms and Conditions</a> </p>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-3 col-sm-6 px-md-0">
+              <div class="foot-list">
+                <p class="fot-name"><a href="{% url 'privacy_policy' %}" class="listing">Privacy Policy</a> </p>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-2 col-sm-6 px-md-0">
+              <div class="foot-list">
+                <p class="fot-name"><a href="{% url 'term_and_condition' %}" class="listing">FAQ</a> </p>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-2 col-sm-6 px-md-0">
+              <div class="foot-list">
+                <p class="fot-name"><a href="#" class="listing">Contact</a> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-3 pb-2">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 p-0">
+              <p class="copy_ryt">© 2021 PlaylistCrunch - All Rights Reserved </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!--my  js  -->
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/owl.carousel.js' %}"></script>
+
+  <!--  -->
+
+  <!-- Footer Tag -->
+
+  <script>
+    $('.owl_carousel_4').owlCarousel({
+      loop: true,
+      nav: true,
+      navText: [
+        "<i class='fa fa-angle-left'></i>",
+        "<i class='fa fa-angle-right'></i>"
+      ],
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 3
+        }
+      }
+    })
+  </script>
+  <!--  -->
+
+
+<script>
+
+    function show(value) {
+    document.querySelector(".text-box").value = value;
+  }
+  
+  let dropdown = document.querySelector(".dropdown")
+  dropdown.onclick = function() {
+      dropdown.classList.toggle("active")
+  }
+
+</script>
+
+
+  <!-- smooth anchor scroll -->
+  <script>
+    $(document).ready(function () {
+      $('a[href^="#"]').on('click', function (e) {
+        e.preventDefault();
+        var target = this.hash;
+        var $target = $(target);
+        $('html, body').stop().animate({
+          'scrollTop': $target.offset().top - 10
+        }, 900, 'swing', function () {
+          // window.location.hash = target;
+        });
+      });
+    });
+  </script>
+  <!--  -->
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>
+
+</body>
+
+</html>

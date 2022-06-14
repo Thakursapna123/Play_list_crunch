@@ -1,0 +1,351 @@
+{% extends 'crunch/layout/base.html' %}
+{% load static %}
+{% block home %}
+<div class="overflow-hidden bg_main">
+
+  {% for i in bannerData %}
+  <section class="home-pg-banner bg-theme-wrap">
+    <div class="container-fluid">
+      <div class="row mb-5 d-flex align-items-center">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+          <div class="card-view">
+            <img src="/static/Upload_Images/{{i.document}}" alt="img" class="img-fluid kh">
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12 col-sm-12 col-12 sec_cloumn">
+          <div class="hero_content">
+            <p class="hero_para">{{ i.bannerHeadText }} </p>
+            <h1 class="hero-heading mb-4">
+              {{ i.bannerText }}
+            </h1>
+            <p class="hero_subpara">
+              {{ i.bannerSubText }}
+            </p>
+            <button class="btn btn-grad get_start_btn"> <a href="#"> Get Started </a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+
+
+
+  <section class="second_section pb-md-5">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 text-center">
+          <p class="approach_paragraph">
+            Build relationships with <br>playlist curators
+          </p>
+        </div>
+      </div>
+
+      <div class="row pb-md-4">
+        <div class="col-md-4 col-sm-12 col-12 text-center">
+          <img src="{% static 'images/layer1.webp' %}" alt="img" class="img-fluid">
+          <div class="build_data pt-5">
+            <p> Scan thousands of <br> spotify playlists </p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-12 text-center">
+          <img src="{% static 'images/layer2.webp' %}" alt="img" class="img-fluid">
+          <div class="build_data pt-5">
+            <p>Discover playlists with big <br> amount of followers</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-12 text-center">
+          <img src="{% static 'images/layer3.webp' %}" alt="img" class="img-fluid">
+          <div class="build_data pt-5">
+            <p>Contact directly with playlist <br> curators for your releases</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button class="btn btn-grad">
+            <a href="{% url 'sigin' %}">Subscribe</a>
+          </button>
+        </div>
+      </div>
+
+    </div> <!-- container -->
+  </section>
+
+
+
+  <section class="third_section pb-5">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 text-center">
+          <p class="work_paragraph">
+            How does it work
+          </p>
+        </div>
+      </div>
+
+
+      <div class="step_1">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h5 class='step1_heading'>Step 1</h5>
+              <p class='step1_para'> Type any Music Genre, similar artist or hashtag </p>
+              <img class="homescreenSearch" src="{% static 'images/step1.svg' %}" alt="">
+            </div>
+          </div>
+      <!--    <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10 col-12 input_code">
+              <input class="effect-1" type="text" placeholder="Type any Music Genre, Similar Artist, Song">
+              <span class="focus-border"></span>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+
+      <div class="step_2">
+        <div class="row">
+          <div class="col-md-12 col-12 text-center">
+            <h5 class='step1_heading'>Step 2</h5>
+            <p class='step2_para'>Select the best playlist for your music</p>
+            <img class="homescreenSearch" src="{% static 'images/Image40.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="step_3">
+        <div class="row">
+          <div class="col-md-12 col-12 text-center">
+            <h5 class='step1_heading'>Step 3</h5>
+            <p class='step3_para'>Contact playlist curators to submit your music</p>
+            <img class="homescreenSearch" src="{% static 'images/step3.png' %}" alt="efwer">
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-12 col-12 text-center">
+          <button class="btn btn-grad">
+            <a href="{% url 'sigin' %}">Subscribe</a>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <section class="perfect_music text-center pt-5 pb-md-4 mt-md-4" id="pricing">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="service_top-topic">
+            <p class="headertext"> Get your music heard now</p>
+          </div>
+        </div>
+      </div>
+  <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="row justify-content-center">
+            <div class="princing_card col-lg-5 col-md-5 col-12 mr-md-3">
+              <div class="card buletcard shadow-sm pt-4">
+                   <div class="service_top-topic">
+          <p class="monthly">MONTHLY</p>
+          
+                  <h2 class="no_monthl">$999</h2>
+                  
+               </div>
+            <hr class="pay_charge">
+                <div class="reg-dots">
+                  <ul class="bullets">
+                    <li class="month_list"> Unlimited searches </li>
+                    <li class="month_list"> Unlimited messages </li>
+                    <li class="month_list">Playlist Analysis</li>
+                        <li class="month_list">Curator contact finder </li>
+                        <li class="month_list">(email/ social media) </li>
+                    <li class="month_list"> Cancel your subscription at any time</li>
+                  </ul>
+                </div>
+              </div>
+           <div class="col-12">
+          <button class="btn btn-monthly">
+            <a href="/sigin/">Subscribe</a>
+          </button>
+        </div>
+            </div>
+             <div class="princing_card col-lg-5 col-md-5 col-12 ml-md-3">
+              <div class="card buletcard shadow-sm pt-4">
+                   <div class="service_top-topic">
+                <p class="monthly">ANUALLY</p>
+             <h2 class="no_monthl"> $2999 </h2>
+               </div>
+
+              <hr class="pay_charge">
+               <div class="off_btn">
+                <button type="button" class="btn btn-anually">
+                  <a href="/sigin/" class="text-white text-decoration-none">40% OFF</a>
+                </button>
+              </div>
+                <div class="reg-dots">
+                  <ul class="bullets">
+                    <li class="month_list"> Unlimited searches </li>
+                    <li class="month_list"> Unlimited messages </li>
+                    <li class="month_list">Playlist Analysis</li>
+                        <li class="month_list">Curator contact finder </li>
+                        <li class="month_list">(email/ social media) </li>
+                    <li class="month_list"> Cancel your subscription at any time</li>
+                  </ul>
+                </div>
+              </div>
+             <div class="col-12">
+          <button class="btn btn-monthly">
+            <a href="/sigin/">Subscribe</a>
+          </button>
+        </div>
+            </div>
+           </div>
+        </div>
+         </div>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="artists_says text-center pb-md-5 mb-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="top-topic_testimonals pb-5">
+            <h3 class="mb-4 mt-5"> What artists are saying </h3>
+          </div>
+        </div>
+
+        <div class="col-12 px-md-5">
+          <div class="owl-carousel owl_carousel_4 slider-icon">
+            {% for i in people %}
+            <div class="item">
+              <div class="col-12">
+                <div class="card_testimonial shadow-sm pt-4">
+                  <div class="card-view_testimonial">
+                    <img src="/static/Upload_Images/{{i.document}}" class="img-fluid">
+                  </div>
+                  <div class="card-title testimonial-content p-3">
+                    <h6 class="pt-3">{{ i.name }}</h6>
+                    <p class="Xyz-firm">{{ i.text }}</p>
+                    <p class="test_brief mx-2 mb-4">{{ i.about }}</p>
+                    <!-- <a href="#" class="testimonial_link">[link to profile] </a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="item">
+              <div class="col-12">
+                <div class="card_testimonial shadow-sm pt-4">
+                  <div class="card-view_testimonial">
+                    <img src="{% static 'images/pp.png' %}" class="img-fluid">
+                  </div>
+                  <div class="card-title testimonial-content p-3">
+                    <h6 class="pt-3"> John Doe </h6>
+                    <p class="Xyz-firm"> Hip Hop Singer </p>
+                    <p class="test_brief mx-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                      amet turpis et ante sodales viverra in eget risus. Proin tincidunt vulputate massa, sit amet
+                      ullamcorper nisi. Vivamus et commodo ex. Maecenas id dolor massa. Nunc facilisis faucibus ipsum
+                      nec mollis. Quisque sed orci sed orci facilisis euismod. Integer interdum eu dui ac.</p>
+                    <a href="#" class="testimonial_link">[link to profile] </a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="item">
+              <div class="col-12">
+                <div class="card_testimonial shadow-sm pt-4">
+                  <div class="card-view_testimonial">
+                    <img src="{% static 'images/pp.png' %}" class="img-fluid">
+                  </div>
+                  <div class="card-title testimonial-content p-3">
+                    <h6 class="pt-3"> John Doe </h6>
+                    <p class="Xyz-firm"> Hip Hop Singer </p>
+                    <p class="test_brief mx-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                      amet turpis et ante sodales viverra in eget risus. Proin tincidunt vulputate massa, sit amet
+                      ullamcorper nisi. Vivamus et commodo ex. Maecenas id dolor massa. Nunc facilisis faucibus ipsum
+                      nec mollis. Quisque sed orci sed orci facilisis euismod. Integer interdum eu dui ac.</p>
+                    <a href="#" class="testimonial_link">[link to profile] </a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="item">
+              <div class="col-12">
+                <div class="card_testimonial shadow-sm pt-4">
+                  <div class="card-view_testimonial">
+                    <img src="{% static 'images/pp.png' %}" class="img-fluid">
+                  </div>
+                  <div class="card-title testimonial-content p-3">
+                    <h6 class="pt-3"> John Doe </h6>
+                    <p class="Xyz-firm"> Hip Hop Singer </p>
+                    <p class="test_brief mx-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                      amet turpis et ante sodales viverra in eget risus. Proin tincidunt vulputate massa, sit amet
+                      ullamcorper nisi. Vivamus et commodo ex. Maecenas id dolor massa. Nunc facilisis faucibus ipsum
+                      nec mollis. Quisque sed orci sed orci facilisis euismod. Integer interdum eu dui ac.</p>
+                    <a href="#" class="testimonial_link">[link to profile] </a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="item">
+              <div class="col-12">
+                <div class="card_testimonial shadow-sm pt-4">
+                  <div class="card-view_testimonial">
+                    <img src="{% static 'images/pp.png' %}" class="img-fluid">
+                  </div>
+                  <div class="card-title testimonial-content p-3">
+                    <h6 class="pt-3"> John Doe </h6>
+                    <p class="Xyz-firm"> Hip Hop Singer </p>
+                    <p class="test_brief mx-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                      amet turpis et ante sodales viverra in eget risus. Proin tincidunt vulputate massa, sit amet
+                      ullamcorper nisi. Vivamus et commodo ex. Maecenas id dolor massa. Nunc facilisis faucibus ipsum
+                      nec mollis. Quisque sed orci sed orci facilisis euismod. Integer interdum eu dui ac.</p>
+                    <a href="#" class="testimonial_link">[link to profile] </a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="item">
+              <div class="col-12">
+                <div class="card_testimonial shadow-sm pt-4">
+                  <div class="card-view_testimonial">
+                    <img src="{% static 'images/pp.png' %}" class="img-fluid">
+                  </div>
+                  <div class="card-title testimonial-content p-3">
+                    <h6 class="pt-3"> John Doe </h6>
+                    <p class="Xyz-firm"> Hip Hop Singer </p>
+                    <p class="test_brief mx-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                      amet turpis et ante sodales viverra in eget risus. Proin tincidunt vulputate massa, sit amet
+                      ullamcorper nisi. Vivamus et commodo ex. Maecenas id dolor massa. Nunc facilisis faucibus ipsum
+                      nec mollis. Quisque sed orci sed orci facilisis euismod. Integer interdum eu dui ac.</p>
+                    <a href="#" class="testimonial_link">[link to profile] </a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="col-12 pb-4">
+          <button class="btn btn-grad">
+            <a href="{% url 'sigin' %}">Subscribe</a>
+          </button>
+
+        </div>
+  </section>
+
+
+</div>
+{% endblock %}
