@@ -610,4 +610,3 @@ def checkout_page(request):
 
 
 
-
